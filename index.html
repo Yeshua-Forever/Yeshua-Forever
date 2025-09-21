@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Christian Posts</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; color: #333; }
+    h1 { text-align: center; margin-bottom: 30px; }
+    .post { background: white; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); padding: 15px; margin-bottom: 20px; }
+    .verse { font-size: 1.25em; font-weight: bold; margin-bottom: 5px; color: #006400; }
+    .reflection { margin-top: 8px; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Christian Posts</h1>
+  <div id="posts"></div>
+
+  <script>
+    const christianPosts = [
+      {
+        verse: "John 3:16",
+        text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."
+      },
+      {
+        verse: "Psalm 23:1",
+        text: "The Lord is my shepherd, I lack nothing."
+      },
+      {
+        verse: "Philippians 4:13",
+        text: "I can do all this through him who gives me strength."
+      }
+    ];
+
+    const postsDiv = document.getElementById('posts');
+
+    christianPosts.forEach(post => {
+      const postDiv = document.createElement('div');
+      postDiv.className = 'post';
+
+      const verseEl = document.createElement('div');
+      verseEl.className = 'verse';
+      verseEl.textContent = post.verse;
+
+      const reflectionEl = document.createElement('div');
+      reflectionEl.className = 'reflection';
+      reflectionEl.textContent = post.text;
+
+      postDiv.appendChild(verseEl);
+      postDiv.appendChild(reflectionEl);
+
+      postsDiv.appendChild(postDiv);
+    });
+  </script>
+</body>
+</html>
