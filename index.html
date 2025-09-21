@@ -3,54 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Christian Posts</title>
+  <title>Christian Quotes</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; color: #333; }
-    h1 { text-align: center; margin-bottom: 30px; }
-    .post { background: white; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); padding: 15px; margin-bottom: 20px; }
-    .verse { font-size: 1.25em; font-weight: bold; margin-bottom: 5px; color: #006400; }
-    .reflection { margin-top: 8px; color: #555; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fefefe;
+      color: #333;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffcc00;
+    }
+    .container {
+      padding: 30px 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .quote {
+      background: #e6f2ff;
+      border-left: 6px solid #003366;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      font-style: italic;
+      font-size: 1.25rem;
+    }
+    .author {
+      text-align: right;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #003366;
+    }
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 50px;
+    }
+
+    /* Simple page display toggle */
+    .page { display: none; }
+    .page.active { display: block; }
   </style>
 </head>
 <body>
-  <h1>Christian Posts</h1>
-  <div id="posts"></div>
+  <header>
+    <h1>Christian Quotes</h1>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('about')">About</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section id="home" class="page active">
+      <div class="quote">
+        "God has given us two hands, one to receive with and the other to give with." 
+        <div class="author">- Billy Graham</div>
+      </div>
+      <div class="quote">
+        "Faith is the victory that overcomes the world." 
+        <div class="author">- Bhakt Singh</div>
+      </div>
+      <div class="quote">
+        "Preach the Gospel at all times. When necessary, use words."
+        <div class="author">- St. Francis of Assisi</div>
+      </div>
+    </section>
+
+    <section id="about" class="page">
+      <h2>About</h2>
+      <p>This website shares inspiring Christian quotes from renowned figures to encourage faith and hope. It is designed simply using HTML, CSS, and JavaScript for easy customization.</p>
+    </section>
+
+    <section id="contact" class="page">
+      <h2>Contact</h2>
+      <p>For questions or prayers, please email us at: <a href="mailto:contact@christianquotes.com">contact@christianquotes.com</a></p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Christian Quotes. All Rights Reserved.
+  </footer>
 
   <script>
-    const christianPosts = [
-      {
-        verse: "John 3:16",
-        text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."
-      },
-      {
-        verse: "Psalm 23:1",
-        text: "The Lord is my shepherd, I lack nothing."
-      },
-      {
-        verse: "Philippians 4:13",
-        text: "I can do all this through him who gives me strength."
-      }
-    ];
-
-    const postsDiv = document.getElementById('posts');
-
-    christianPosts.forEach(post => {
-      const postDiv = document.createElement('div');
-      postDiv.className = 'post';
-
-      const verseEl = document.createElement('div');
-      verseEl.className = 'verse';
-      verseEl.textContent = post.verse;
-
-      const reflectionEl = document.createElement('div');
-      reflectionEl.className = 'reflection';
-      reflectionEl.textContent = post.text;
-
-      postDiv.appendChild(verseEl);
-      postDiv.appendChild(reflectionEl);
-
-      postsDiv.appendChild(postDiv);
-    });
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.classList.remove('active');
+      });
+      const selectedPage = document.getElementById(pageId);
+      if(selectedPage) selectedPage.classList.add('active');
+    }
   </script>
 </body>
 </html>
